@@ -126,7 +126,7 @@ async def on_ready():
     logger.info(f'Bot is in {len(bot.guilds)} guilds')
 
     await bot.change_presence(
-        activity=discord.Game(name="Type $question to ask me anything!")
+        activity=discord.Game(name="Type $q to ask me anything!")
     )
 
 
@@ -137,10 +137,10 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    # Check if message starts with $question
-    if message.content.startswith('$question'):
-        # Extract the actual question (everything after "$question")
-        message_content = message.content.split("$question")[1]
+    # Check if message starts with $q
+    if message.content.startswith('$q'):
+        # Extract the actual question (everything after "$q")
+        message_content = message.content.split("$q", 1)[1].strip()
 
         # Debug print
         print(f"Question: {message_content}")
