@@ -156,6 +156,9 @@ async def on_message(message):
 
         # Send response to Discord channel
         await message.channel.send(response)
+    # Remind user about triggers if message doesn't start with $q or !
+    elif message.content and not message.content.startswith('!') and not message.content.startswith('$'):
+        await message.channel.send(f"💡 Tip: Use `$q <your message>` to ask me anything or `!ask <your message>` for a longer response!")
 
     # Process other commands
     await bot.process_commands(message)
