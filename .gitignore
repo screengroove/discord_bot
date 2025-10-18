@@ -2,6 +2,10 @@
 .env
 .env.local
 
+# Project Documentation (private, except README.md)
+*.md
+!README.md
+
 # Python
 __pycache__/
 *.py[cod]
