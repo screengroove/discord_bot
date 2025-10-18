@@ -1,0 +1,52 @@
+# Discord Bot Development Notes
+
+## Setup Instructions
+1. Create a Discord application at https://discord.com/developers/applications
+2. Create a bot user and copy the token
+3. Enable necessary intents in the Discord Developer Portal:
+   - Message Content Intent
+   - Server Members Intent (if needed)
+   - Presence Intent (if needed)
+
+## Inviting the Bot
+Use this URL format to invite your bot to a server:
+https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=YOUR_PERMISSIONS&scope=bot
+
+Recommended permissions:
+- Read Messages/View Channels
+- Send Messages
+- Embed Links
+- Attach Files
+- Read Message History
+- Add Reactions
+
+## Environment Variables Required
+- DISCORD_TOKEN: Your bot token from Discord Developer Portal
+- DISCORD_CLIENT_ID: Your application's client ID
+- OPENAI_API_KEY: If using OpenAI features
+- BOT_PREFIX: Command prefix (default: !)
+- LOG_LEVEL: Logging level (default: INFO)
+
+## Common Commands
+- !ping - Check bot latency
+- !hello - Get a greeting
+- !info - Display bot information
+- !help - Show all available commands
+
+## Development Tips
+- Always use environment variables for sensitive data
+- Enable appropriate intents for your bot's functionality
+- Use discord.py's built-in error handling
+- Log important events for debugging
+- Test commands in a development server first
+
+## Useful Resources
+- discord.py documentation: https://discordpy.readthedocs.io/
+- Discord Developer Portal: https://discord.com/developers/
+- Discord API documentation: https://discord.com/developers/docs/
+
+## Common Issues
+1. Bot not responding: Check if Message Content Intent is enabled
+2. Permission errors: Verify bot has necessary permissions in the server
+3. Token errors: Ensure .env file is loaded and token is correct
+4. Connection issues: Check internet connection and Discord API status

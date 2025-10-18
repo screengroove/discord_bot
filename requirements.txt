@@ -1,0 +1,14 @@
+# Discord Bot Dependencies
+
+# Discord library
+discord.py>=2.3.2
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# OpenAI integration (optional)
+openai>=1.3.0
+
+# Additional utilities
+aiohttp>=3.9.0
+asyncio>=3.4.3
