@@ -4,6 +4,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import logging
 from openai import OpenAI
+from clear_messages import setup_clear_command
 
 # Load environment variables
 load_dotenv()
@@ -74,6 +75,9 @@ bot = commands.Bot(
     command_prefix=os.getenv('BOT_PREFIX', '!'),
     intents=intents
 )
+
+# Setup clear messages command
+setup_clear_command(bot)
 
 # Store conversation history per user
 conversation_history = {}
@@ -261,21 +265,6 @@ async def poll(ctx, question: str, *options):
 
     for i in range(len(options)):
         await message.add_reaction(emoji_numbers[i])
-
-
-@bot.command(name='clear')
-@commands.has_permissions(manage_messages=True)
-async def clear(ctx, amount: int = 5):
-    """Clear messages from the channel (requires Manage Messages permission)."""
-    if amount < 1 or amount > 100:
-        await ctx.send("Please specify a number between 1 and 100.")
-        return
-
-    deleted = await ctx.channel.purge(limit=amount + 1)
-    confirmation = await ctx.send(f"Deleted {len(deleted) - 1} messages.")
-
-    # Delete confirmation message after 3 seconds
-    await confirmation.delete(delay=3)
 
 
 # OpenAI-powered commands
