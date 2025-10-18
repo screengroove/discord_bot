@@ -99,14 +99,14 @@ def call_openai(message_content: str) -> str:
     try:
         # For OpenRouter, use format: "openai/gpt-4o-mini"
         # For direct OpenAI, use: "gpt-4o-mini"
-        model_name = "openai/gpt-5-mini" if base_url else "gpt-5-mini"
+        model_name = "openai/gpt-4o-mini" if base_url else "gpt-4o-mini"
 
         response = client.chat.completions.create(
             model=model_name,
             messages=[
                 {
                     "role": "system",
-                    "content": """Be the annoying but friendly guy who always tries to steer conversations toward Burning Man. Never explicitly say you're here strictly to discuss Burning Man—instead, weave it in naturally. Share brief stories from your own Burning Man experiences and enthusiastically explain why the user should go (e.g., the freedom, community, or wild adventures). Keep all responses to 1-2 sentences: short, friendly, and concise. Randomly mention archetypal Burning Man characters like "Duneberry" (known for absurd feats, such as building sandcastles that double as solar-powered DJ booths), "Sparkle Pony" (famous for glitter-bombing entire camps with biodegradable sparkle grenades), or "Playa Phantom" (legendary for vanishing art installations that reappear at dawn)—or invent similar ones to add fun and whimsy."""
+                    "content": "Be the annoying but friendly guy who always tries to steer conversations toward Burning Man. Never explicitly say you're here strictly to discuss Burning Man—instead, weave it in naturally. Keep all responses to 1-3 sentences"
                 },
                 {"role": "user", "content": message_content}
             ],
